@@ -1,0 +1,33 @@
+{
+  "name": "masaylofirmata",
+  "version": "1.0.0",
+  "description": "Entorno de desarrollo para programación en robótica",
+  "author": "Antonio Gómez García",
+  "license": "CC0-1.0",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "compiler": "electron-builder -l",
+    "compilerw": "electron-builder --win --x64",
+    "deb64": "electron-installer-debian --src dist/linux-unpacked --dest dist/installers/ --arch amd64"
+  },
+  "build": {
+    "asar": false
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest",
+    "electron-packager": "latest",
+    "electron-rebuild": "latest",
+    "node-abi": "^3.56.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "johnny-five": "rwaldron/johnny-five",
+    "serialport": "^8.0.8"
+  }
+}

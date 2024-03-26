@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="style.css" media="all" />    <title>Masaylo Firmata</title>
+    
+    <script src="blockly/blockly_compressed.js"></script> 
+    <script src="blockly/blocks_compressed.js"></script>
+    <!-- <script src="toolbox.xml"></script> -->
+    <script src="blockly/msg/js/es.js"></script>
+
+  </head>
+  <body>
+    <h1>Firmaylo</h1>
+  <h2>Controla tu Masaylo de forma directa</h2>
+  <h3>Debes cargar en tu Arduino el software Firmata</h3>
+  <select id="puertoserie"></select>
+<button id="conecta">Conectar</button>
+<div id="masaylo">
+  <table>
+    <tr>
+      <td><label>Control izquierdo</label></td><td><input type="text" id="ic" size="2" maxlength="2" value=6></td>
+      <td><label>Control derecho</label></td><td><input type="text" id="dc" size="2" maxlength="2" value=11></td>
+      <td><label>IR izquierdo</label></td><td><input type="text" id="iri" size="2" maxlength="2" value=14></td>
+      <td><label>US trigger</label></td><td><input type="text" id="ust" size="2" maxlength="2" value=17></td>
+      <td><label>Encoder izquierdo</label></td><td><input type="text" id="enci" size="2" maxlength="2" value=2></td>
+
+  </tr>
+    <tr>
+      <td><label>Izquierdo 1</label></td><td><input type="text" id="i1" size="2" maxlength="2" value=7></td>
+      <td><label>Derecho 1</label></td><td><input type="text" id="d1" size="2" maxlength="2" value=12></td>
+      <td><label>IR derecho</label></td><td><input type="text" id="ird" size="2" maxlength="2" value=15></td>
+      <td><label>US echo</label></td><td><input type="text" id="use" size="2" maxlength="2" value=14></td>
+      <td><label>Encoder derecho</label></td><td><input type="text" id="encd" size="2" maxlength="2" value=3></td>
+
+    </tr>
+    <tr>
+      <td><label>Izquierdo 2</label></td><td><input type="text" id="i2" size="2" maxlength="2" value=8></td>
+      <td><label>Derecho 2</label></td><td><input type="text" id="d2" size="2" maxlength="2" value=13></td>
+      <td><label>Servo cabecera</label></td><td><input type="text" id="cabeza" size="2" maxlength="2" value=5></td>
+      <td><label>Servo brazo</label></td><td><input type="text" id="brazo" size="2" maxlength="2" value=4></td>
+      <td><label>Zumbador</label></td><td><input type="text" id="zumbador" size="2" maxlength="2" value=13></td>
+
+    </tr>
+  </table>
+  <table>
+    <tr>
+    <td>
+      <input type="range" disabled="true" min="0" max="255" value="0" class="slider" id="adelante" >
+    </td>
+    <td>
+      <input type="range" disabled="true"min="0" max="255" value="0" class="slider" id="atras" >
+    </td>
+    <td>
+      <input type="range" disabled="true"min="0" max="255" value="0" class="slider" id="izquierda" >
+    </td>
+    <td>
+      <input type="range" disabled="true" min="0" max="255" value="0" class="slider" id="derecha" >
+    </td>
+  </tr>
+<tr>
+  <td>Adelante: <label id="vAdelante">0</label></td>
+  <td>Atras: <label id="vAtras">0</label></td>
+  <td>Izquierda: <label id="vIzquierda">0</label></td>
+  <td>Derecha: <label id="vDerecha">0</label></td>
+
+</tr>
+<tr>
+  <td><img id="imageniri" src="./img/iriblanco.png" alt="Sensor IR izquierdo"></td>
+  <td><img id="imagenird" src="./img/irdblanco.png" alt="Sensor IR derecho"></td>
+  
+
+  <td><input type="range" disabled="true" min="0" max="180" value="90" class="slider" id="valorBrazo" ></td>
+  <td><input type="range" disabled="true" min="0" max="180" value="90" class="slider" id="valorCabeza" ></td>
+
+</tr>
+<tr>
+  <td></td><td></td><td>Posición brazo: <label id="posBrazo">90</label></td><td>Posición cabeza: <label id="posCabeza">90</label></td>
+</tr>
+</table>
+</div>
+<div id="ventanaPrincipal"></div>
+
+<!-- You can also require other files to run in this process -->
+    <script src="comunicacion.js"></script>
+  </body>
+</html>
